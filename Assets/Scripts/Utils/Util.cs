@@ -4,9 +4,9 @@ using UnityEngine;
 
 public static class Util
 {
-    public static GameObject FindChild(GameObject go, string name = null, bool bRecursive = false)
+    public static GameObject FindChild(GameObject go, string name = null, bool recursive = false)
     {
-        var transform = FindChild<Transform>(go, name, bRecursive);
+        var transform = FindChild<Transform>(go, name, recursive);
         if (!transform)
         {
             return null;
@@ -15,14 +15,14 @@ public static class Util
         return transform.gameObject;
     }
 
-    public static T FindChild<T>(GameObject go, string name = null, bool bRecursive = false) where T : UnityEngine.Object
+    public static T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : Object
     {
         if (!go)
         {
             return null;
         }
 
-        if (bRecursive)
+        if (recursive)
         {
             foreach (T component in go.GetComponentsInChildren<T>())
             {
@@ -39,8 +39,7 @@ public static class Util
                 var transform = go.transform.GetChild(i);
                 if (string.IsNullOrEmpty(name) || transform.name.Equals(name))
                 {
-                    var component = transform.GetComponent<T>();
-                    if (component)
+                    if (transform.TryGetComponent<T>(out var component))
                     {
                         return component;
                     }
