@@ -10,14 +10,25 @@ public class Managers : MonoBehaviour
     public static PoolManager Pool { get { return GetInstance._pool; } }
     public static ResourceManager Resource { get { return GetInstance._resource; } }
     public static SoundManager Sound { get { return GetInstance._sound; } }
+    public static UIManager UI { get { return GetInstance._ui; } }
 
     private PoolManager _pool = new();
     private ResourceManager _resource = new();
     private SoundManager _sound = new();
+    private UIManager _ui = new();
 
     private void Awake()
     {
         init();
+    }
+
+    public static void Clear()
+    {
+        init();
+
+        Pool.Clear();
+        Sound.Clear();
+        UI.Clear();
     }
 
     private static void init()
@@ -35,6 +46,7 @@ public class Managers : MonoBehaviour
 
             s_instance._pool.Init();
             s_instance._sound.Init();
+            s_instance._ui.Init();
         }
     }
 }
