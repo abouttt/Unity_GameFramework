@@ -9,11 +9,13 @@ public class Managers : MonoBehaviour
 
     public static PoolManager Pool { get { return GetInstance._pool; } }
     public static ResourceManager Resource { get { return GetInstance._resource; } }
+    public static SceneManagerEx Scene { get { return GetInstance._scene; } }
     public static SoundManager Sound { get { return GetInstance._sound; } }
     public static UIManager UI { get { return GetInstance._ui; } }
 
     private PoolManager _pool = new();
     private ResourceManager _resource = new();
+    private SceneManagerEx _scene = new();
     private SoundManager _sound = new();
     private UIManager _ui = new();
 

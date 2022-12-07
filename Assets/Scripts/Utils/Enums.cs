@@ -4,6 +4,12 @@ using UnityEngine;
 
 public static class Enums
 {
+    public enum Scene
+    {
+        Unknown,
+        GameScene,
+    }
+
     public enum Sound
     {
         Bgm,
